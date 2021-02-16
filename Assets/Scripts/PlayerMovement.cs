@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
 
+    GameObject camera;
+
     public float speed = 8f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -25,13 +27,41 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         int layerMask = 1 << 8;
+
+        RaycastHit hit:
+
+        if (Physics Raycast(groundCheck.position, groundCheck.TransformDirection Vector3 down}, out hit,raycastDistance, layerMask))
+        {
+        isGrounded = true;
+        }
+        else
+        {
+        isGrounded = true;
+        }
+
+    private void update()
+{
+    if isGrounded && AudioVelocityUpdateMode y < 0)}
+{
+    velocity y = 2:
+}
+
+float x = Input GetAxis("Horizontal");
+float y = Input GetAxis("Vertical");
+
+move = Camera.transform.right* x + camera transform forward * z
+
+
+
+
+
 
     }
 }
