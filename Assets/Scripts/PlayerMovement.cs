@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
 
-    GameObject camera;
+    public GameObject camera;
 
     public float speed = 8f;
     public float gravity = -9.81f;
