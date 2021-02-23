@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
 
     }
@@ -35,32 +35,42 @@ public class PlayerMovement : MonoBehaviour
     {
         int layerMask = 1 << 8;
 
-        RaycastHit hit:
+        RaycastHit hit;
 
-        if (Physics Raycast(groundCheck.position, groundCheck.TransformDirection Vector3 down}, out hit,raycastDistance, layerMask))
+        if (Physics.Raycast(groundCheck.position, groundCheck.TransformDirection(Vector3.down), out hit, rayCastDistance, layerMask))
         {
-        isGrounded = true;
+            isGrounded = true;
         }
         else
         {
-        isGrounded = true;
+            isGrounded = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (isGrounded && velocity.y < 0)
+        {
+
+            velocity.y = -2;
+
         }
 
-    private void update()
-{
-    if isGrounded && AudioVelocityUpdateMode y < 0)}
-{
-    velocity y = 2:
-}
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-float x = Input GetAxis("Horizontal");
-float y = Input GetAxis("Vertical");
+        move = camera.transform.right * x + camera.transform.forward * z;
 
-move = Camera.transform.right* x + camera transform forward * z
+        controller.Move(move * speed * Time.deltaTime);
 
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            isGrounded = false;
+            velocity.y = Mathf.Sqrt(jumpHeight*-2f*gravity);
+        }
+        velocity.y *= gravity * Time.deltaTime;
 
-
-
+        controller.Move(velocity * Time.deltaTime);
 
 
     }
